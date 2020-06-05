@@ -436,10 +436,7 @@ public class ImageResizer {
         // Rotate if necessary. Rotate first because we will otherwise
         // get wrong dimensions if we want the new dimensions to be after rotation.
         // NOTE: This will "fix" the image using it's exif info if it is rotated as well.
-        Bitmap rotatedImage = sourceImage;
-        int orientation = getOrientation(context, imageUri);
-        rotation = orientation + rotation;
-        rotatedImage = ImageResizer.rotateImage(sourceImage, rotation);
+	Bitmap rotatedImage = ImageResizer.rotateImage(scaledImage, rotation);
 
         if(rotatedImage == null){
             throw new IOException("Unable to rotate image. Most likely due to not enough memory.");
